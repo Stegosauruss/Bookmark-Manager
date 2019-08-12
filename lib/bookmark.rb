@@ -1,14 +1,17 @@
+require 'pg'
+
 class Bookmark
   def initialize
-    @bookmarks = [
-      "http://www.makersacademy.com",
-      "http://www.destroyallsoftware.com",
-      "http://facebook.com",
-      "http://www.google.com"
-     ]
   end
 
   def all
-    @bookmarks.join(" ")
+    bookmarks = "Bookmarks: "
+    bookmark_db = PG.connect( dbname: 'bookmark_manager')
+    bookmark_db.exec( "SELECT * FROM bookmarks") do |result|
+      result.each do |row|
+        bookmarks << ("\n %s" % row.values_at('url'))
+      end
+    end
+    bookmarks
   end
 end
