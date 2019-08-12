@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 feature "test hello world path" do
   scenario "Hello world is displayed" do
     visit "/"
