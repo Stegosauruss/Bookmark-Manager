@@ -1,4 +1,4 @@
 require_relative './app'
 require 'capybara'
 
-run Bookmark
+run BookmarkWeb

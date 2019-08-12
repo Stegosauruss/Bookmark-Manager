@@ -1,7 +1,7 @@
 require "sinatra/base"
 require './lib/bookmark.rb'
 
-class Bookmark < Sinatra::Base
+class BookmarkWeb < Sinatra::Base
   get '/' do
   "Hello, world!"
   end
