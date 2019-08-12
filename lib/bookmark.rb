@@ -1,17 +1,11 @@
 require 'pg'
 
 class Bookmark
-  def initialize
-  end
 
-  def all
-    bookmarks = "Bookmarks: "
+  def self.all
     bookmark_db = PG.connect( dbname: 'bookmark_manager')
-    bookmark_db.exec( "SELECT * FROM bookmarks") do |result|
-      result.each do |row|
-        bookmarks << ("\n %s" % row.values_at('url'))
-      end
+    result = bookmark_db.exec( "SELECT * FROM bookmarks") do |result|
+      result.map { |bookmark| bookmark['url'] }
     end
-    bookmarks
   end
 end
