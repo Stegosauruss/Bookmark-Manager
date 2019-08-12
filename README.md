@@ -1,6 +1,11 @@
 # Bookmark-Manager
+##How to use:
+Connect to psql
+Create the database using the psql command CREATE DATABASE bookmark_manager;
+Connect to the database using the pqsl command \c bookmark_manager;
+Run the query we have saved in the file 01_create_bookmarks_table.sql
 
-User Stories
+##User Stories
 
 Show a list of bookmarks
 ```
@@ -27,6 +32,10 @@ Client <---- Response: <-----            Controller
 
 
 Add new bookmarks
+As a time-pressed user
+So that I can save a website
+I would like to add the site's address and title to bookmark manager
+
 Delete bookmarks
 Update bookmarks
 Comment on bookmarks

@@ -1,7 +1,35 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/student/Projects/Bookmark_Manager/spec/features/hello_world_spec.rb": [
+      "/Users/yasheshshah/Desktop/Projects/Bookmark-Manager/spec/bookmark_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/yasheshshah/Desktop/Projects/Bookmark-Manager/spec/features/bookmarks_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/yasheshshah/Desktop/Projects/Bookmark-Manager/spec/features/hello_world_spec.rb": [
         1,
         null,
         1,
@@ -12,6 +40,6 @@
         null
       ]
     },
-    "timestamp": 1565618603
+    "timestamp": 1565619073
   }
 }
