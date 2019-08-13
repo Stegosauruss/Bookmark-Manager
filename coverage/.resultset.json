@@ -1,12 +1,31 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/student/Projects/Bookmark_Manager/spec/features/hello_world_spec.rb": [
+      "/Users/student/Projects/Bookmark_Manager/spec/features/viewing_bookmarks_spec.rb": [
         null,
         null,
         1,
+        1,
         null,
         1,
+        2,
+        2,
+        2,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
         1,
         1,
         1,
@@ -14,6 +33,6 @@
         null
       ]
     },
-    "timestamp": 1565679076
+    "timestamp": 1565712169
   }
 }

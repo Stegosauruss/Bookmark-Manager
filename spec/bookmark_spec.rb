@@ -17,8 +17,17 @@ describe '.all' do
 
     bookmarks = Bookmark.all
 
-    expect(bookmarks).to include('http://www.makersacademy.com')
-    expect(bookmarks).to include('http://www.destroyallsoftware.com')
-    expect(bookmarks).to include('http://www.google.com')
+    expect(bookmarks).to include(url1)
+    expect(bookmarks).to include(url2)
+    expect(bookmarks).to include(url3)
+  end
+end
+
+describe '#create' do
+  it 'creates a new url' do
+    Bookmark.create("https://rubular.com")
+    bookmarks = Bookmark.all
+
+    expect(bookmarks).to include("https://rubular.com")
   end
 end

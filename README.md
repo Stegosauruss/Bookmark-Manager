@@ -13,6 +13,28 @@ As a user
 So that I can visit my favourite websites
 I'd like to display a list of bookmarks
 ```
+
+Add new bookmarks
+```
+As a user
+So that I can store websites for later
+I want to add bookmarks to the bookmark manager
+```
+
+
+
+
+As a time-pressed user
+So that I can save a website
+I would like to add the site's address and title to bookmark manager
+
+Delete bookmarks
+Update bookmarks
+Comment on bookmarks
+Tag bookmarks into categories
+Filter bookmarks by tag
+Users are restricted to manage only their own bookmarks
+
 DOMAIN MODEL
 Client ----> Get '/bookmarks' ------>   Controller -----> /lib/Bookmark
                                                 :bookmark info
@@ -25,20 +47,4 @@ Client <---- Response: <-----            Controller
             :Bookmark
             :Name
             :Link
-            :Description            
-
-
-
-
-
-Add new bookmarks
-As a time-pressed user
-So that I can save a website
-I would like to add the site's address and title to bookmark manager
-
-Delete bookmarks
-Update bookmarks
-Comment on bookmarks
-Tag bookmarks into categories
-Filter bookmarks by tag
-Users are restricted to manage only their own bookmarks
+            :Description        
