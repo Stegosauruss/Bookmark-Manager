@@ -2,6 +2,8 @@
   "RSpec": {
     "coverage": {
       "/Users/student/Projects/Bookmark_Manager/spec/features/hello_world_spec.rb": [
+        null,
+        null,
         1,
         null,
         1,
@@ -12,6 +14,6 @@
         null
       ]
     },
-    "timestamp": 1565626216
+    "timestamp": 1565679076
   }
 }

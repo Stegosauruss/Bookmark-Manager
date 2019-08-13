@@ -1,11 +1,16 @@
+# frozen_string_literal: true
+
 require 'pg'
 
 class Bookmark
-
   def self.all
-    bookmark_db = PG.connect( dbname: 'bookmark_manager')
-    result = bookmark_db.exec( "SELECT * FROM bookmarks") do |result|
-      result.map { |bookmark| bookmark['url'] }
-    end
+    connection = if ENV['ENVIRONMENT'] == 'test'
+                   PG.connect(dbname: 'bookmark_manager_test')
+                 else
+                   PG.connect(dbname: 'bookmark_manager')
+                 end
+
+    result = connection.exec('SELECT * FROM bookmarks')
+    result.map { |bookmark| bookmark['url'] }
   end
 end

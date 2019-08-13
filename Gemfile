@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 ruby '2.6.3'
 
+gem 'pg'
 gem 'rake'
 gem 'sinatra'
-gem 'pg'
 
 group :test do
   gem 'capybara'

@@ -1,9 +1,11 @@
-require "sinatra/base"
+# frozen_string_literal: true
+
+require 'sinatra/base'
 require './lib/bookmark.rb'
 
 class BookmarkWeb < Sinatra::Base
   get '/' do
-  "Hello, world!"
+    'Hello, world!'
   end
 
   get '/bookmarks' do
@@ -11,5 +13,5 @@ class BookmarkWeb < Sinatra::Base
     erb :'bookmarks/index'
   end
 
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end
