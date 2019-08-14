@@ -21,13 +21,25 @@ class Bookmark
 
   def self.create(url:, title:)
     connection = self.connect
-    result = connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, title, url;")
+    result = connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, title, url")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   def self.delete(id:)
     connection = self.connect
-    connection.exec("DELETE FROM bookmarks WHERE id = '#{id}';")
+    connection.exec("DELETE FROM bookmarks WHERE id = '#{id}'")
+  end
+
+  def self.update(id:, title:, url:)
+    connection = self.connect
+    result = connection.exec("UPDATE bookmarks SET title = '#{title}', url = '#{url}' WHERE id = '#{id}' RETURNING id, title, url;")
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
+  end
+
+  def self.find(id:)
+    connection = self.connect
+    result = connection.exec("SELECT id, title, url FROM bookmarks WHERE id = #{id}")
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   private

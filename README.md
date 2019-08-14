@@ -29,6 +29,12 @@ I want to remove bookmarks from the bookmark manager
 ```
 
 Update bookmarks
+```
+As a user
+So that my bookmarks don't go out of date
+I want to update the information about my bookmarks
+```
+
 Comment on bookmarks
 Tag bookmarks into categories
 Filter bookmarks by tag

@@ -1,14 +1,15 @@
 require 'spec_helper'
 require 'pg'
 
-feature 'Removing Bookmarks' do
-  scenario 'A user can delete bookmarks' do
-    visit '/bookmarks'
-    add_bookmark('https://rubular.com', 'Ruby RegEx Editor')
-    add_bookmark('https://github.com', 'Git Hub Homepage')
-    click_button 'Delete Ruby RegEx Editor'
+feature 'Deleting a bookmark' do
+  scenario 'A user can delete a bookmark' do
+    Bookmark.create(url: 'http://www.makersacademy.com', title: 'Makers Academy')
+    visit('/bookmarks')
+    expect(page).to have_link('Makers Academy', href: 'http://www.makersacademy.com')
 
-    expect(page).not_to have_link('Ruby RegEx Editor', href: 'https://rubular.com')
-    expect(page).to have_link('Git Hub Homepage', href: 'https://github.com')
+    first('.bookmark').click_button 'Delete'
+
+    expect(current_path).to eq '/bookmarks'
+    expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
   end
 end

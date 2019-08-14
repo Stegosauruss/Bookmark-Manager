@@ -2,7 +2,7 @@
 
 ENV['ENVIRONMENT'] = 'test'
 ENV['RACK_ENV'] = 'test'
-require './app'
+require File.join(File.dirname(__FILE__), '..', 'app.rb')
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-console'
