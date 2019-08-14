@@ -1,12 +1,10 @@
 require 'spec_helper'
 require 'pg'
 
-feature 'Create Bookmarks' do
+feature 'Adding Bookmarks' do
   scenario 'A user can add bookmarks' do
     visit '/bookmarks'
-    click_button 'Add Bookmark'
-    fill_in 'url', with: 'https://rubular.com'
-    click_button 'Submit'
-    expect(page).to have_content 'https://rubular.com'
+    add_bookmark('https://rubular.com', 'Ruby RegEx Editor')
+    expect(page).to have_link('Ruby RegEx Editor', href: 'https://rubular.com')
   end
 end

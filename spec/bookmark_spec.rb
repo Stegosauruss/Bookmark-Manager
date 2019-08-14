@@ -3,27 +3,31 @@
 require 'bookmark'
 
 describe '.all' do
-  let(:url1) { 'http://www.makersacademy.com' }
-  let(:url2) { 'http://www.destroyallsoftware.com' }
-  let(:url3) { 'http://www.google.com' }
-
   it 'returns a list of bookmarks' do
-    Bookmark.create(url: url1)
-    Bookmark.create(url: url2)
-    Bookmark.create(url: url3)
+    connection = PG.connect(dbname: 'bookmark_manager_test')
+ 
+    bookmark = Bookmark.create(url: "http://www.makersacademy.com", title: "Makers Academy")
+    Bookmark.create(url: "http://www.destroyallsoftware.com", title: "Destroy All Software")
+    Bookmark.create(url: "http://www.google.com", title: "Google")
+ 
     bookmarks = Bookmark.all
+ 
+    expect(bookmarks.length).to eq 3
+    expect(bookmarks.first).to be_a Bookmark
+    expect(bookmarks.first.id).to eq bookmark.id
+    expect(bookmarks.first.title).to eq 'Makers Academy'
+    expect(bookmarks.first.url).to eq 'http://www.makersacademy.com'
+   end
+ end
 
-    expect(bookmarks).to include(url1)
-    expect(bookmarks).to include(url2)
-    expect(bookmarks).to include(url3)
-  end
-end
+ describe '.create' do
+  it 'creates a new bookmark' do
+    bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
+    first_value = persisted_data(id: bookmark.id)
 
-describe '#create' do
-  it 'creates a new url' do
-    Bookmark.create(url: "https://rubular.com")
-    bookmarks = Bookmark.all
-
-    expect(bookmarks).to include("https://rubular.com")
+    expect(bookmark).to be_a Bookmark
+    expect(bookmark.id).to eq first_value['id']
+    expect(bookmark.title).to eq 'Test Bookmark'
+    expect(bookmark.url).to eq 'http://www.testbookmark.com'
   end
 end
