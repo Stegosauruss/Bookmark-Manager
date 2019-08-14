@@ -17,9 +17,9 @@ class BookmarkWeb < Sinatra::Base
     erb :'bookmarks/new'
   end
 
-  post '/bookmarks/create' do
-    p params
-    Bookmark.create(params[:url])
+  post '/bookmarks/new' do
+    p "Form data submitted to the /bookmarks route!"
+    Bookmark.create(url: params['url'])
     redirect '/bookmarks'
   end
 

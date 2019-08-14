@@ -8,13 +8,9 @@ describe '.all' do
   let(:url3) { 'http://www.google.com' }
 
   it 'returns a list of bookmarks' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-
-    # Add the test data
-    connection.exec("INSERT INTO bookmarks (url) VALUES ('#{url1}');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES('#{url2}');")
-    connection.exec("INSERT INTO bookmarks (url) VALUES('#{url3}');")
-
+    Bookmark.create(url: url1)
+    Bookmark.create(url: url2)
+    Bookmark.create(url: url3)
     bookmarks = Bookmark.all
 
     expect(bookmarks).to include(url1)
@@ -25,7 +21,7 @@ end
 
 describe '#create' do
   it 'creates a new url' do
-    Bookmark.create("https://rubular.com")
+    Bookmark.create(url: "https://rubular.com")
     bookmarks = Bookmark.all
 
     expect(bookmarks).to include("https://rubular.com")
