@@ -23,5 +23,10 @@ class BookmarkWeb < Sinatra::Base
     redirect '/bookmarks'
   end
 
+  post '/bookmarks/delete/:id' do
+    Bookmark.delete(id: params[:id])
+    redirect '/bookmarks'
+  end
+
   run! if app_file == $PROGRAM_NAME
 end

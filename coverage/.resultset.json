@@ -1,6 +1,22 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/student/Projects/Bookmark_Manager/spec/features/removing_bookmarks_spec.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/Users/student/Projects/Bookmark_Manager/spec/features/viewing_bookmarks_spec.rb": [
         null,
         null,
@@ -33,6 +49,6 @@
         null
       ]
     },
-    "timestamp": 1565780692
+    "timestamp": 1565783404
   }
 }

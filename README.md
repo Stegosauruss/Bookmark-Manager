@@ -21,14 +21,13 @@ So that I can store websites for later
 I want to add bookmarks to the bookmark manager
 ```
 
-
-
-
-As a time-pressed user
-So that I can save a website
-I would like to add the site's address and title to bookmark manager
-
 Delete bookmarks
+```
+As a user
+So that I can keep my bookmarks manageable
+I want to remove bookmarks from the bookmark manager
+```
+
 Update bookmarks
 Comment on bookmarks
 Tag bookmarks into categories
