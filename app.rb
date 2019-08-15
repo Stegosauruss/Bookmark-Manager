@@ -1,9 +1,16 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require './lib/bookmark.rb'
+require './database_connection_setup'
+require 'uri'
 
 class BookmarkWeb < Sinatra::Base
+  database_connection_setup
+  enable :sessions, :method_override
+  register Sinatra::Flash
+
   get '/' do
     redirect '/bookmarks'
   end
@@ -17,13 +24,12 @@ class BookmarkWeb < Sinatra::Base
     erb :'bookmarks/new'
   end
 
-  post '/bookmarks/new' do
-    p 'Form data submitted to the /bookmarks route!'
-    Bookmark.create(url: params['url'], title: params['title'])
-    redirect '/bookmarks'
+  post '/bookmarks' do
+    flash[:notice] = "You must submit a valid URL." unless Bookmark.create(url: params[:url], title: params[:title])
+    redirect('/bookmarks')
   end
 
-  post '/bookmarks/delete/:id' do
+  delete '/bookmarks/delete/:id' do
     Bookmark.delete(id: params[:id])
     redirect '/bookmarks'
   end
@@ -33,8 +39,8 @@ class BookmarkWeb < Sinatra::Base
     erb :'bookmarks/edit'
   end
 
-  post '/bookmarks/:id' do
-    Bookmark.update(id: params[:id],title: params[:title],url: params[:url])
+  patch '/bookmarks/:id' do
+    flash[:notice] = "You must submit a valid URL." unless Bookmark.update(id: params[:id], url: params[:url], title: params[:title])
     redirect to '/bookmarks'
   end
 

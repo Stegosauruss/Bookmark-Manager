@@ -30,6 +30,13 @@ describe '.create' do
     expect(bookmark.title).to eq 'Test Bookmark'
     expect(bookmark.url).to eq 'http://www.testbookmark.com'
   end
+
+  context 'input is not url' do
+    it 'does not create a new bookmark' do
+      Bookmark.create(url: 'not a real bookmark', title: 'not a real bookmark')
+      expect(Bookmark.all).not_to include 'not a real bookmark'
+    end
+  end
 end
 
 describe '.delete' do
@@ -49,6 +56,16 @@ describe '.update' do
     Bookmark.update(id: bookmark.id, title: 'Makers Academy', url: 'http://www.makersacademy.com')
 
     expect(Bookmark.all.first.title).to eq 'Makers Academy'
+  end
+
+  context 'input is not url' do
+    it 'does not update the bookmark' do
+      bookmark = Bookmark.create(title: 'Makers School', url: 'http://www.makersschool.com')
+
+      Bookmark.update(id: bookmark.id, title: 'Makers Academy', url: 'not a real url')
+  
+      expect(Bookmark.all.first.title).to eq 'Makers School'
+    end
   end
 end
 
