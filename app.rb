@@ -4,6 +4,8 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require './lib/bookmark.rb'
 require './lib/comment.rb'
+require './lib/tag.rb'
+require './lib/bookmark_tag.rb'
 require './database_connection_setup'
 require 'uri'
 
@@ -52,6 +54,17 @@ class BookmarkWeb < Sinatra::Base
 
   post '/bookmarks/:id/comments' do
     Comment.create(text: params[:comment], bookmark_id: params[:id])
+    redirect '/bookmarks'
+  end
+
+  get '/bookmarks/:id/tags/new' do
+    @bookmark_id = params[:id]
+    erb :'/tags/new'
+  end
+
+  post '/bookmarks/:id/tags' do
+    tag = Tag.create(content: params[:tag])
+    BookmarkTag.create(bookmark_id: params[:id], tag_id: tag.id)
     redirect '/bookmarks'
   end
 
