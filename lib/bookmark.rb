@@ -43,6 +43,10 @@ class Bookmark
     self.return_bookmark(result)
   end
 
+  def comments(comment_class = Comment)
+    comment_class.where(bookmark_id: id)
+  end
+
   private
 
   def self.return_bookmark(result)
